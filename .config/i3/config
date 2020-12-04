@@ -38,16 +38,47 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
+#############################
+## auto-start applications ##
+#############################
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Background wallpaper with nitrogen
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+
+exec --no-startup-id xfce4-power-manager
+
+# exec --no-startup-id pamac-tray
+
+# Clipbord manager
+exec --no-startup-id clipit
+
+# exec --no-startup-id blueman-applet
+
+# exec_always --no-startup-id sbxkb
+
+exec --no-startup-id start_conky_maia
+
+# exec --no-startup-id start_conky_green
+
+exec --no-startup-id xautolock -time 10 -locker blurlock
+
+exec_always --no-startup-id ff-theme-util
+
+exec_always --no-startup-id fix_xcursor
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# NetworkManager, nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Background Wallpaper :)
-exec --no-startup-id feh --bg-fill /home/rohit/Pictures/Wallpapers/leaves_1.jpg
+# Background wallpaper with feh
+# exec --no-startup-id feh --bg-fill /home/rohit/Pictures/Wallpapers/leaves_1.jpg
+
+#############################
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
