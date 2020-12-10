@@ -1,6 +1,7 @@
 call plug#begin("~/.nvim/plugged")
 Plug 'dracula/vim'
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -14,9 +15,6 @@ if (has("termguicolors"))
 endif
 syntax enable
 colorscheme dracula
-
-"" Make neovim transparent
-hi Normal guibg=NONE ctermbg=NONE
 
 "" NERDTree configuration
 let g:NERDTreeShowHidden = 1
@@ -33,6 +31,20 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 " Change focus to NERDTree
 map <silent> <C-n> :NERDTreeFocus<CR>
 
+"" nerdtree-git-plugin configuration
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
 "" Show line numbers
 set number
 
@@ -45,3 +57,5 @@ set clipboard+=unnamedplus
 "" Autointend and Smartintend
 set autoindent smartindent
 
+"" Make neovim transparent
+hi Normal guibg=NONE ctermbg=NONE
