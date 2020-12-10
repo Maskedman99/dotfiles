@@ -2,7 +2,11 @@ call plug#begin("~/.nvim/plugged")
 Plug 'dracula/vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+"" coc configuration
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-svelte']
 
 "" Theme configuration
 if (has("termguicolors"))
@@ -32,5 +36,12 @@ map <silent> <C-n> :NERDTreeFocus<CR>
 "" Show line numbers
 set number
 
-"" Add mouse support
+"" Mouse support
 set mouse=a
+
+"" Clipboard
+set clipboard+=unnamedplus
+
+"" Autointend and Smartintend
+set autoindent smartindent
+
