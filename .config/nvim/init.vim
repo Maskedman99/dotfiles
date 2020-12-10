@@ -11,6 +11,7 @@ endif
 syntax enable
 colorscheme dracula
 
+"" Make neovim transparent
 hi Normal guibg=NONE ctermbg=NONE
 
 "" NERDTree configuration
@@ -23,5 +24,13 @@ let g:NERDTreeStatusline = ''
 autocmd vimenter * NERDTree
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle
+" Open and Close NERDTree
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+" Change focus to NERDTree
+map <silent> <C-n> :NERDTreeFocus<CR>
+
+"" Show line numbers
+set number
+
+"" Add mouse support
+set mouse=a
