@@ -25,7 +25,7 @@ colorscheme dracula
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 38
 let g:NERDTreeStatusline = ''
 " Open NERDTree automatically when nvim starts
 autocmd vimenter * NERDTree
