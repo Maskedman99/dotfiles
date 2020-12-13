@@ -3,7 +3,7 @@
     gray:                        rgba ( 129, 131, 131, 100 % );
     red:                         rgba ( 194, 54, 33, 100 % );
     lred:                        rgba ( 252, 57, 31, 100 % );
-    green:                       #2E7D32;
+    green:                       #35bf5c;
     lgreen:                      rgba ( 49, 231, 34, 100 % );
     yellow:                      rgba ( 173, 173, 39, 100 % );
     lyellow:                     rgba ( 234, 236, 35, 100 % );
@@ -35,10 +35,10 @@
     urgent-foreground:           var(black);
 
     selected-normal-background:  var(green);
-    selected-normal-foreground:  var(white);
+    selected-normal-foreground:  var(black);
 
     selected-active-background:  var(green);
-    selected-active-foreground:  var(white);
+    selected-active-foreground:  var(black);
 
     selected-urgent-background:  var(lcyan);
     selected-urgent-foreground:  var(black);

@@ -15,7 +15,7 @@ label=<span color="#ffb86c"> </span>
 # Disk free
 [disk]
 command=echo  $(df -H -l --output='avail' "$HOME" | grep -E -o '[0-9]+G')
-label=<span color="#a9e185"> </span>
+label=<span color="#35bf5c"> </span>
 interval=30
 
 # Load
@@ -28,7 +28,7 @@ label=<span color="#8be9fd"> </span>
 [RAM]
 command=echo $(free -h --si | grep Mem | awk '{ printf("%s - %s", $3,$4) }')
 interval=10
-label=<span color="#a9e185"> </span>
+label=<span color="#35bf5c"> </span>
 
 # Battery
 [battery]
@@ -51,6 +51,6 @@ interval=5
 # Volume
 [volume]
 command=~/.config/i3blocks/scripts/volume
-label=<span color="#ff79c6"> </span>
+label=<span color="#35bf5c"> </span>
 interval=once
 signal=10
