@@ -1,0 +1,56 @@
+align=center
+markup=pango
+
+[mediaplayer]
+command=playerctl metadata --format "{{ artist }} - {{ title }}"
+interval=5
+label=<span color="#a9e185">🎵 </span>
+
+[wifi]
+command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i%\n", int($3 * 100 / 70) }'
+instance=wlp11s0f3u1
+interval=10
+label=<span color="#ffb86c"> </span>
+
+# Disk free
+[disk]
+command=echo  $(df -H -l --output='avail' "$HOME" | grep -E -o '[0-9]+G')
+label=<span color="#a9e185"> </span>
+interval=30
+
+# Load
+[load_average]
+command=~/.config/i3blocks/scripts/cpuload
+interval=10
+label=<span color="#8be9fd"> </span>
+
+# RAM (used - free)
+[RAM]
+command=echo $(free -h --si | grep Mem | awk '{ printf("%s - %s", $3,$4) }')
+interval=10
+label=<span color="#a9e185"> </span>
+
+# Battery
+[battery]
+command=~/.config/i3blocks/scripts/battery
+interval=30
+
+# Update time every 5 seconds
+[datetime]
+command=date "+%a %d/%m/%Y %I:%M %p"
+interval=5
+
+# fix backlight first
+#[backlight]
+#command=~/.config/i3blocks/scripts/backlight
+#label=☀
+#interval=20
+#STEP_SIZE=5
+#USE_SUDO=0
+
+# Volume
+[volume]
+command=~/.config/i3blocks/scripts/volume
+label=<span color="#ff79c6"> </span>
+interval=once
+signal=10
