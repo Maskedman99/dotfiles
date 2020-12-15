@@ -4,25 +4,25 @@ markup=pango
 [mediaplayer]
 command=playerctl metadata --format "{{ artist }} - {{ title }}"
 interval=5
-label=<span color="#a9e185">🎵 </span>
+label=<span color="#8be9fd"><span font="Font Awesome 5 Free">  </span></span>
 
 [wifi]
 command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i%\n", int($3 * 100 / 70) }'
 instance=wlp11s0f3u1
 interval=10
-label=<span color="#ffb86c"> </span>
+label=<span color="#ffb86c"><span font="Font Awesome 5 Free"> </span></span>
 
 # Disk free
 [disk]
 command=echo  $(df -H -l --output='avail' "$HOME" | grep -E -o '[0-9]+G')
-label=<span color="#35bf5c"> </span>
+label=<span color="#35bf5c"><span font="Font Awesome 5 Free"> </span></span>
 interval=30
 
 # Load
 [load_average]
 command=~/.config/i3blocks/scripts/cpuload
 interval=10
-label=<span color="#8be9fd"> </span>
+label=<span color="#8be9fd"><span font="Font Awesome 5 Free"> </span></span>
 
 # RAM (used - free)
 [RAM]
@@ -51,6 +51,6 @@ interval=5
 # Volume
 [volume]
 command=~/.config/i3blocks/scripts/volume
-label=<span color="#35bf5c"> </span>
+label=<span color="#ffb86c"><span font="Font Awesome 5 Free"> </span></span>
 interval=once
 signal=10

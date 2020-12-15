@@ -49,16 +49,16 @@ else:
         percentleft = 0
 
     # stands for charging
-    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
+    FA_LIGHTNING = "<span color='#8be9fd'><span font='Font Awesome 5 Free'>\uf0e7</span></span>"
 
     # stands for plugged in
-    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
+    FA_PLUG = "<span color='#35bf5c'><span font='Font Awesome 5 Free'>\uf1e6</span></span>"
 
     # stands for using battery
-    FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
+    FA_BATTERY = "<span font='Font Awesome 5 Free'>\uf240</span>"
 
     # stands for unknown status of battery
-    FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
+    FA_QUESTION = "<span font='Font Awesome 5 Free'>\uf128</span>"
 
 
     if state == "Discharging":
