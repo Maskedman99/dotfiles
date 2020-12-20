@@ -41,7 +41,7 @@ ${color2}delete selected files - ${color}Delete
 ${color2}find a file - ${color}Ctrl+f
 ${color2}search for files - ${color}\\
 
-${color2}show disk usage - ${color}dd
+${color2}show disk usage - ${color}du
 ${color2}show hidden files - ${color}zh
 ${color2}select current file - ${color}space
 
