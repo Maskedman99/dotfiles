@@ -50,6 +50,9 @@ bindsym $mod+Shift+d exec --no-startup-id dmenu_recency
 # start bmenu
 bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
 
+# toggle showing shortcuts/keybindings in conky
+bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
+
 ########################
 
 #############################
