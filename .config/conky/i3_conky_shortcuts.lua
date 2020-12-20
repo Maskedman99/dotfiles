@@ -32,7 +32,6 @@ conky.config = {
 conky.text = [[
                   ${color2}i3${color}
 
-${color2}new terminal - ${color}mod+Enter
 ${color2}toggle i3bar - ${color}mod+m
 ${color2}new terminal - ${color}mod+Enter
 ${color2}kill focused - ${color}mod+Shift+q
