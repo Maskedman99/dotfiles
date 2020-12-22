@@ -78,7 +78,6 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 
 ################
 
-
 #############################
 ## auto-start applications ##
 #############################
@@ -115,9 +114,9 @@ exec --no-startup-id nm-applet
 
 #############################
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
+###################
+## sound-section ##
+###################
 
 #exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
@@ -139,7 +138,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pki
 bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
 
-################################################################################################
+####################
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -294,9 +293,6 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
-
-# Screenshot
-bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 # hide/unhide i3bar
 bindsym $mod+m bar mode toggle
