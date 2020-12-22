@@ -64,6 +64,21 @@ bindsym $mod+Ctrl+p exec pcmanfm
 
 ########################
 
+################
+## screenshot ##
+################
+
+# scrot
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+# maim
+#bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+
+################
+
+
 #############################
 ## auto-start applications ##
 #############################

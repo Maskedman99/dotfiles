@@ -57,6 +57,10 @@ ${color2}resize window - ${color}mod+r
 ${color2}toggle fullscreen - ${color}mod+f
 ${color2}toggle floating - ${color}mod+Shift+Space
 
+${color2}fullscreen screenshot - ${color}Print
+${color2}focused window screenshot - ${color}mod+Print
+${color2}select area screenshot - ${color}mod+Shift+Print
+
 ${color2}exit i3- ${color}mod+Shift+e
 ${color2}restart i3 -${color}mod+Shift+r
 ${color2}lock screen - ${color}mod+Shift+x
