@@ -53,6 +53,15 @@ bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
 # toggle showing shortcuts/keybindings in conky
 bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
 
+# start firefox
+bindsym $mod+Ctrl+f exec firefox
+
+# start ranger
+bindsym $mod+Ctrl+r exec alacritty -e ranger
+
+# start pcmanfm
+bindsym $mod+Ctrl+p exec pcmanfm
+
 ########################
 
 #############################
