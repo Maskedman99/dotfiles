@@ -68,7 +68,7 @@ bindsym $mod+Ctrl+p exec pcmanfm
 ## screenshot ##
 ################
 
-# scrot
+# i3-scrot
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -141,15 +141,15 @@ bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -
 ####################
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; dunstify 'brightness up' -a i3"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness down' -a i3"
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
+bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
