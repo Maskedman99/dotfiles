@@ -1,8 +1,8 @@
 [global]
     frame_width = 1
-    frame_color = "#788388"
+    frame_color = "#35bf5c"
     
-    font = "firacode-11"
+    font = "fira code 11"
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -23,8 +23,10 @@
     #   %i  iconname (including its path)
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
     # Markup is allowed
-    format = "%s %p\n%b"
+    format = "<b>%a</b>\n%s %p\n%b"
     
     # Sort messages by urgency.
     sort = yes
@@ -34,7 +36,7 @@
     
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
     
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -69,6 +71,29 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     geometry = "0x4-25+25"
+
+    # Turn on the progess bar
+    progress_bar = true
+
+    # Set the progress bar height. This includes the frame, so make sure
+    # it's at least twice as big as the frame width.
+    progress_bar_height = 10
+
+    # Set the frame width of the progress bar
+    progress_bar_frame_width = 1
+    
+    # Set the minimum width for the progress bar
+    progress_bar_min_width = 150
+
+    # Set the maximum width for the progress bar
+    progress_bar_max_width = 300
+
+    # Define the corner radius of the notification window
+    # in pixel size. If the radius is 0, you have no rounded
+    # corners.
+    # The radius will be automatically lowered if it exceeds half of the
+    # notification height to avoid clipping text and/or icons.
+    corner_radius=5
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
