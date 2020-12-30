@@ -1,0 +1,322 @@
+# sway config file
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+
+set $manjaro-color	 #35bf5c
+set $black		 #000000
+set $bg-color	         #1D1D1D
+set $inactive-bg-color   #101010
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $manjaro-color      $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
+font xft:fira code 9
+
+# Hide the edge borders on the screen edge
+hide_edge_borders both
+
+# Hide Title bar
+default_border pixel
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+###########
+## input ##
+###########
+
+	input type:touchpad {
+	    tap enabled
+	    natural_scroll enabled
+	    middle_emulation enabled
+	}
+
+###########
+
+########################
+## custom keybindings ##
+########################
+
+# start a terminal
+	bindsym $mod+Return exec alacritty
+
+# kill focused window
+	bindsym $mod+Shift+q kill
+
+# start rofi
+	bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
+
+# start dmenu_recency
+	bindsym $mod+Shift+d exec --no-startup-id dmenu_recency
+
+# start bmenu
+	bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
+
+# toggle showing shortcuts/keybindings in conky
+	bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
+
+# start firefox
+	bindsym $mod+Ctrl+f exec firefox
+
+# start ranger
+	bindsym $mod+Ctrl+r exec alacritty -e ranger
+
+# start pcmanfm
+	bindsym $mod+Ctrl+p exec pcmanfm
+
+########################
+
+################
+## screenshot ##
+################
+
+# i3-scrot
+	bindsym Print exec --no-startup-id i3-scrot
+	bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+	bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+# maim
+	#bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+
+################
+
+#############################
+## auto-start applications ##
+#############################
+
+	#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+	exec --no-startup-id xfce4-power-manager
+
+# Clipbord manager
+	exec --no-startup-id clipit
+
+	# exec --no-startup-id blueman-applet
+
+	# exec_always --no-startup-id sbxkb
+
+	exec --no-startup-id xautolock -time 10 -locker blurlock
+
+	#exec_always --no-startup-id ff-theme-util
+
+	exec_always --no-startup-id fix_xcursor
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+	# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager, nm-applet is a desktop environment-independent system tray GUI for it.
+	exec --no-startup-id nm-applet
+
+#############################
+
+###################
+## sound-section ##
+###################
+
+	#exec --no-startup-id volumeicon
+	bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
+	#exec --no-startup-id pulseaudio
+	#exec --no-startup-id pa-applet
+	#bindsym $mod+Ctrl+m exec pavucontrol
+
+# Use pactl to adjust volume in PulseAudio.
+	# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
+	# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
+	# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
+	# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
+
+# Use mixer for alsa to adjust volume
+	bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
+	bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
+	bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
+	# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
+
+####################
+
+# Screen brightness controls
+	bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; dunstify 'brightness up' -a sway"
+	bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness down' -a sway"
+
+# Touchpad controls
+	#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
+
+# Media player controls
+	bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
+	bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
+	bindsym XF86AudioNext exec playerctl next
+	bindsym XF86AudioPrev exec playerctl previous
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+	output * bg /home/rohit/Pictures/Wallpapers/leaves_1.jpg fill
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
+
+# Set shut down, restart and locking features
+bindsym $mod+Shift+z mode "$mode_system"
+set $mode_system (L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym p exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Lock screen
+bindsym $mod+Shift+x exec --no-startup-id i3lock -f -n -c 00000000
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# hide/unhide swaybar
+bindsym $mod+m bar mode toggle
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# swaybar
+bar {
+        status_command i3blocks
+        position bottom
+	separator_symbol "|"
+	colors {
+		background #22222299
+		separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $manjaro-color     $black
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
