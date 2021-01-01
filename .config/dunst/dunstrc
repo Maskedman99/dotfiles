@@ -26,7 +26,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a</b>\n%s %p\n%b"
+    format = "<b><span foreground='#35bf5c'>%a</span></b>\n%s %p\n%b"
     
     # Sort messages by urgency.
     sort = yes
