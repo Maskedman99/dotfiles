@@ -75,7 +75,7 @@ window:
   #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
@@ -696,14 +696,17 @@ key_bindings:
   #- { key: N,                           mode: Vi, action: SearchNext              }
   #- { key: N,      mods: Shift,         mode: Vi, action: SearchPrevious          }
 
-  - { key: Paste,                          	      	    action: Paste          }
-  - { key: Copy,                                	    action: Copy           }
-  - { key: L,         mods: Control,            	    action: ClearLogNotice }
-  - { key: L,         mods: Control,	  	mode: ~Vi,  chars: "\x0c"          }
-  - { key: PageUp,    mods: Shift,   		mode: ~Alt, action: ScrollPageUp,  }
-  - { key: PageDown,  mods: Shift,   		mode: ~Alt, action: ScrollPageDown }
-  - { key: Home,      mods: Shift,   		mode: ~Alt, action: ScrollToTop,   }
-  - { key: End,       mods: Shift,   		mode: ~Alt, action: ScrollToBottom }
+  - { key: Paste,                          	      	    action: Paste            }
+  - { key: Copy,                                	    action: Copy             }
+  - { key: L,         mods: Control,            	    action: ClearLogNotice   }
+  - { key: L,         mods: Control,	  	mode: ~Vi,  chars: "\x0c"            }
+  - { key: PageUp,    mods: Shift,   		mode: ~Alt, action: ScrollPageUp,    }
+  - { key: PageDown,  mods: Shift,   		mode: ~Alt, action: ScrollPageDown   }
+  - { key: Home,      mods: Shift,   		mode: ~Alt, action: ScrollToTop,     }
+  - { key: End,       mods: Shift,   		mode: ~Alt, action: ScrollToBottom   }
+  - { key: Return,    mods: Control|Shift,                  action: SpawnNewInstance }
+  - { key: F,         mods: Control,                        action: ToggleFullscreen }
+
 
   # (Windows, Linux, and BSD only)
   - { key: V,		   mods: Control,		   action: Paste	    }
