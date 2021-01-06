@@ -75,8 +75,8 @@ set mouse=a
 "" Clipboard
 set clipboard+=unnamedplus
 
-"" Autointend and Smartintend
-set autoindent smartindent
+"" Tab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 "" Make neovim transparent
 hi Normal guibg=NONE ctermbg=NONE
