@@ -102,49 +102,23 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
     family: Fira Code
-
-    # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
-  #bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: monospace
-
-    # The `style` can be specified to pick a specific face.
-    #style: Bold
+  bold:
+    family: Fira Code
+    style: Bold
 
   # Italic font face
-  #italic:
-    # Font family
-    #
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: monospace
-
-    # The `style` can be specified to pick a specific face.
-    #style: Italic
+  italic:
+    family: Fira Code
+    style: Italic
 
   # Bold italic font face
-  #bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: monospace
-
-    # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+  bold_italic:
+    family: Fira Code
+    style: Bold Italic
 
   # Point size
   size: 11.0
@@ -170,9 +144,9 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
+# Colors
 colors:
   # Default colors
   #primary:
@@ -236,21 +210,21 @@ colors:
     #  foreground: '#1d1f21'
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black:   '#1d1f21'
+    red:     '#cc6666'
+    green:   '#b5bd68'
+    yellow:  '#f0c674'
+    blue:    '#81a2be'
+    magenta: '#b294bb'
+    cyan:    '#8abeb7'
+    white:   '#c5c8c6'
 
   # Bright colors
   bright:
     black:   '#666666'
     red:     '#d54e53'
-    green:   '#b9ca4a'
+    green:   '#35bf5c'
     yellow:  '#e7c547'
     blue:    '#7aa6da'
     magenta: '#c397d8'
@@ -258,18 +232,15 @@ colors:
     white:   '#eaeaea'
 
   # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
+  dim:
+    black:   '#131415'
+    red:     '#864343'
+    green:   '#777c44'
+    yellow:  '#9e824c'
+    blue:    '#556a7d'
+    magenta: '#75617b'
+    cyan:    '#5b7d78'
+    white:   '#828482'
 
   # Indexed Colors
   #
@@ -284,11 +255,9 @@ colors:
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
-#bell:
+bell:
   # Visual Bell Animation
-  #
   # Animation effect for flashing the screen when the visual bell is rung.
-  #
   # Values for `animation`:
   #   - Ease
   #   - EaseOut
@@ -300,7 +269,7 @@ colors:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  #animation: EaseOutExpo
+  animation: EaseOutExpo
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
@@ -324,7 +293,6 @@ colors:
 
 # Background opacity
 #
-# Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 0.9
 
