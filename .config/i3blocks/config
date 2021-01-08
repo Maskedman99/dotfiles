@@ -37,7 +37,7 @@ interval=30
 
 # Update time every 5 seconds
 [datetime]
-command=date "+%a %d/%m/%Y %I:%M %p"
+command=~/.config/i3blocks/scripts/datetime
 interval=5
 
 # fix backlight first
@@ -53,4 +53,3 @@ interval=5
 command=~/.config/i3blocks/scripts/volume
 label=<span color="#ffb86c"><span font="Font Awesome 5 Free"> </span></span>
 interval=once
-signal=10

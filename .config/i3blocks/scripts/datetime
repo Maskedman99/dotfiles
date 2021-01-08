@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ "$BLOCK_BUTTON" == 1 ]
+then
+  runningCalenderConky=$(pgrep -a conky | awk '/calender_conky/{print $1}')
+  if [[ -z "$runningCalenderConky" ]]; then
+    i3-msg exec -q "conky -q -d -c $HOME/.config/conky/calender_conky.lua"
+  else
+    echo "$runningCalenderConky" | xargs -n 1 kill -15
+  fi
+fi
+
+date "+%a %d/%m/%Y %I:%M %p"
