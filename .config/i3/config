@@ -96,7 +96,7 @@ exec --no-startup-id clipit
 
 # exec_always --no-startup-id sbxkb
 
-exec --no-startup-id xautolock -time 10 -locker blurlock
+# exec --no-startup-id xautolock -time 10 -locker blurlock
 
 exec_always --no-startup-id ff-theme-util
 
@@ -104,7 +104,7 @@ exec_always --no-startup-id fix_xcursor
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock.sh
 
 # NetworkManager, nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -268,7 +268,7 @@ mode "$mode_system" {
 }
 
 # Lock screen
-bindsym $mod+Shift+x exec --no-startup-id i3lock -f -n -c 00000000
+bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/i3/lock.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
