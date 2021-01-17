@@ -53,3 +53,4 @@ interval=5
 command=~/.config/i3blocks/scripts/volume
 label=<span color="#ffb86c"><span font="Font Awesome 5 Free"> </span></span>
 interval=once
+signal=10
