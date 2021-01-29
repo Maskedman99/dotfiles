@@ -33,7 +33,7 @@ conky.config = {
 
 conky.text = [[
                              ${color2}Calender${color}
-${execi 3600 cal -y -m}
+${execi 3600 cal -y -m --color=always}
                                ${color2}Time${color}
 ${execi 1 date}
 ]]
