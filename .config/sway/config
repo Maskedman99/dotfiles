@@ -19,7 +19,7 @@ client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 # Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
-font xft:fira code 9
+font pango:fira code 9
 
 # Hide the edge borders on the screen edge
 hide_edge_borders both
@@ -79,13 +79,7 @@ floating_modifier $mod
 ## screenshot ##
 ################
 
-# i3-scrot
-	bindsym Print exec --no-startup-id i3-scrot
-	bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-	bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-
-# maim
-	#bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+# Need to add a wayland supported screenshot tool
 
 ################
 
@@ -256,9 +250,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+Shift+z mode "$mode_system"
-set $mode_system (L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown
-mode "$mode_system" {
+bindsym $mod+Shift+z mode "(L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown"
+mode "(L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym p exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
@@ -273,7 +266,7 @@ mode "$mode_system" {
 }
 
 # Lock screen
-bindsym $mod+Shift+x exec --no-startup-id i3lock -f -n -c 00000000
+bindsym $mod+Shift+x exec alacritty -t matrixlock -d 1366 768 -e cmatrix -Ls -u 5 & sleep 2 & swaymsg '[title = 'matrixlock']' fullscreen & swaylock -n -c 00000000 & swaymsg '[title = 'matrixlock']' kill
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
