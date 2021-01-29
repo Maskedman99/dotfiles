@@ -16,7 +16,7 @@ label=<span color="#ffb86c"><span font="Font Awesome 5 Free"> </span></span>
 [disk]
 command=echo $(df -H -l --output='avail' "$HOME" | grep -E -o '[0-9]+G')
 label=<span color="#35bf5c"><span font="Font Awesome 5 Free"> </span></span>
-interval=30
+interval=60
 
 [load_average]
 command=~/.config/i3blocks/scripts/cpuload
