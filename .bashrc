@@ -116,6 +116,18 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
+# color the man pages :)
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;32;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;39;5;146m' \
+    man "$@"
+}
+
 #
 # # ex - archive extractor
 # # usage: ex <file>
