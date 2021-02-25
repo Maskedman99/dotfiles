@@ -140,3 +140,6 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+# Rust
+source "$HOME/.cargo/env"
