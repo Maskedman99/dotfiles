@@ -3,6 +3,8 @@ refresh-on-startup yes
 browser $HOME/.config/newsboat/scripts/urlchooser.sh
 history-limit 0
 max-items 100
+cleanup-on-quit yes
+delete-read-articles-on-quit yes
 save-path "$HOME/Documents/Newsboat/"
 
 itemview-title-format "%T [%u unread, %t total]"
