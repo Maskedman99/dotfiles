@@ -68,6 +68,10 @@ bindsym $mod+Ctrl+n exec --no-startup-id alacritty -e newsboat
 # start cmus
 bindsym $mod+Ctrl+c exec --no-startup-id alacritty -e cmus
 
+# start alsamixer (ALSA) / pavucontrol (pulseaudio)
+bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec pavucontrol
+
 ########################
 
 ################
@@ -84,14 +88,23 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 
 ################
 
+###############
+## wallpaper ##
+###############
+
+# Wallpaper with feh
+# exec --no-startup-id feh --bg-fill /home/rohit/Pictures/Wallpapers/leaves_1.jpg
+
+# Wallpaper with nitrogen
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+
+###############
+
 #############################
 ## auto-start applications ##
 #############################
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Background wallpaper with nitrogen
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 
 exec --no-startup-id xfce4-power-manager
 
@@ -115,20 +128,15 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock.sh
 # NetworkManager, nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Background wallpaper with feh
-# exec --no-startup-id feh --bg-fill /home/rohit/Pictures/Wallpapers/leaves_1.jpg
-
 #############################
 
 ###################
 ## sound-section ##
 ###################
 
-#exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+# exec --no-startup-id volumeicon
+# exec --no-startup-id pulseaudio
+# exec --no-startup-id pa-applet
 
 # Use pactl to adjust volume in PulseAudio.
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
@@ -136,7 +144,7 @@ bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
 
-# Use mixer for alsa to adjust volume
+# Use amixer to adjust volume in ALSA
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
@@ -144,12 +152,16 @@ bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -
 
 ####################
 
+##############
+## controls ##
+##############
+
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; dunstify 'brightness up' -a i3"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness down' -a i3"
 
 # Touchpad controls
-#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
+# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && \
@@ -158,6 +170,8 @@ bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && \
 	dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+###############
 
 # change focus
 bindsym $mod+j focus left
@@ -302,7 +316,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # hide/unhide i3bar
-bindsym $mod+m bar mode toggle
+bindsym $mod+b bar mode toggle
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus

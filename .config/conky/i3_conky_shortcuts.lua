@@ -21,7 +21,7 @@ conky.config = {
 	own_window_argb_visual = true,
 	own_window_argb_value = 150,
 	
-        update_interval = 2.0,
+        update_interval = 360.0,
 	background = true,        
 	cpu_avg_samples = 2, 
 	double_buffer = true,
@@ -32,7 +32,7 @@ conky.config = {
 conky.text = [[
                   ${color2}i3${color}
 
-${color2}toggle i3bar - ${color}mod+m
+${color2}toggle i3bar - ${color}mod+b
 ${color2}new terminal - ${color}mod+Enter
 ${color2}kill focused - ${color}mod+Shift+q
 
