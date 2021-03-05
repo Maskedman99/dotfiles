@@ -65,6 +65,9 @@ bindsym $mod+Ctrl+p exec pcmanfm
 # start newsboat
 bindsym $mod+Ctrl+n exec --no-startup-id alacritty -e newsboat
 
+# start cmus
+bindsym $mod+Ctrl+c exec --no-startup-id alacritty -e cmus
+
 ########################
 
 ################

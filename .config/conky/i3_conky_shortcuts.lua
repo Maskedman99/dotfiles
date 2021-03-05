@@ -36,9 +36,11 @@ ${color2}toggle i3bar - ${color}mod+m
 ${color2}new terminal - ${color}mod+Enter
 ${color2}kill focused - ${color}mod+Shift+q
 
+${color2}cmus - ${color}mod+Ctrl+c
 ${color2}ranger - ${color}mod+Ctrl+r
 ${color2}firefox - ${color}mod+Ctrl+f
 ${color2}pcmanfm - ${color}mod+Ctrl+p
+${color2}newsboat - ${color}mod+Ctrl+n
 ${color2}alsamixer - ${color}mod+Ctrl+m
 
 ${color2}rofi - ${color}mod+d
