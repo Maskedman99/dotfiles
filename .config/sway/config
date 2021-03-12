@@ -151,7 +151,7 @@ floating_modifier $mod
 	bindsym XF86AudioPrev exec playerctl previous
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-	output * bg /home/rohit/Pictures/Wallpapers/leaves_1.jpg fill
+	output * bg $HOME/Pictures/Wallpapers/leaves_1.jpg fill
 
 # change focus
 bindsym $mod+j focus left
