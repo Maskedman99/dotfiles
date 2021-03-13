@@ -45,10 +45,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
 
 # start dmenu_recency
-bindsym $mod+Shift+d exec --no-startup-id dmenu_recency
-
-# start bmenu
-bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
 # toggle showing shortcuts/keybindings in conky
 bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
@@ -272,15 +269,14 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m \
 
 # Set shut down, restart and locking features
 bindsym $mod+Shift+z mode "$mode_system"
-set $mode_system (L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown
+set $mode_system (L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym p exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id $HOME/.config/i3/lock.sh, mode "default"
+    bindsym u exec --no-startup-id systemctl suspend, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
