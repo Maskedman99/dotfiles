@@ -34,11 +34,11 @@ floating_modifier $mod
 ## input ##
 ###########
 
-	input type:touchpad {
-	    tap enabled
-	    natural_scroll enabled
-	    middle_emulation enabled
-	}
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
 
 ###########
 
@@ -47,31 +47,31 @@ floating_modifier $mod
 ########################
 
 # start a terminal
-	bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
-	bindsym $mod+Shift+q kill
+bindsym $mod+Shift+q kill
 
 # start rofi
-	bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
+bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
 
 # start dmenu_recency
-	bindsym $mod+Shift+d exec --no-startup-id dmenu_recency
+bindsym $mod+Shift+d exec --no-startup-id dmenu_recency
 
 # start bmenu
-	bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
+bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
 
 # toggle showing shortcuts/keybindings in conky
-	bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
+bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
 
 # start firefox
-	bindsym $mod+Ctrl+f exec firefox
+bindsym $mod+Ctrl+f exec firefox
 
 # start ranger
-	bindsym $mod+Ctrl+r exec alacritty -e ranger
+bindsym $mod+Ctrl+r exec alacritty -e ranger
 
 # start pcmanfm
-	bindsym $mod+Ctrl+p exec pcmanfm
+bindsym $mod+Ctrl+p exec pcmanfm
 
 ########################
 
@@ -87,29 +87,26 @@ floating_modifier $mod
 ## auto-start applications ##
 #############################
 
-	#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-	exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id xfce4-power-manager
 
 # Clipbord manager
-	exec --no-startup-id clipit
+#exec --no-startup-id clipit
 
-	# exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 
-	# exec_always --no-startup-id sbxkb
+# exec_always --no-startup-id sbxkb
 
-	exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 10 -locker blurlock
 
-	#exec_always --no-startup-id ff-theme-util
+#exec_always --no-startup-id ff-theme-util
 
-	exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id fix_xcursor
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-	# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager, nm-applet is a desktop environment-independent system tray GUI for it.
-	exec --no-startup-id nm-applet
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 #############################
 
@@ -117,41 +114,37 @@ floating_modifier $mod
 ## sound-section ##
 ###################
 
-	#exec --no-startup-id volumeicon
-	bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
-	#exec --no-startup-id pulseaudio
-	#exec --no-startup-id pa-applet
-	#bindsym $mod+Ctrl+m exec pavucontrol
+bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
 
 # Use pactl to adjust volume in PulseAudio.
-	# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
-	# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
-	# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
-	# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
 
 # Use mixer for alsa to adjust volume
-	bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
-	bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
-	bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
-	# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
 
 ####################
 
 # Screen brightness controls
-	bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; dunstify 'brightness up' -a sway"
-	bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness down' -a sway"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; dunstify 'brightness up' -a sway"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness down' -a sway"
 
 # Touchpad controls
-	#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Media player controls
-	bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
-	bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
-	bindsym XF86AudioNext exec playerctl next
-	bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
+bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-	output * bg $HOME/Pictures/Wallpapers/leaves_1.jpg fill
+# Wallpaper
+output * bg $HOME/Pictures/Wallpapers/leaves_1.jpg fill
 
 # change focus
 bindsym $mod+j focus left
@@ -243,10 +236,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart sway inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
+# exit sway
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
 
 # Set shut down, restart and locking features
@@ -293,11 +286,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# hide/unhide swaybar
-bindsym $mod+m bar mode toggle
-
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
+
+# hide/unhide swaybar
+bindsym $mod+b bar mode toggle
 
 # swaybar
 bar {
