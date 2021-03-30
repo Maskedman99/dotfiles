@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
-if [ "$BLOCK_BUTTON" == 1 ]
-then
-  networkmanager_dmenu
-fi
+[ "$BLOCK_BUTTON" == 1 ] && networkmanager_dmenu
 
 nmcli device | grep -w connected | awk '{print $4,"-",$2}'
