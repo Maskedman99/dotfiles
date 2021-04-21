@@ -4,8 +4,9 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-set $manjaro-color       #35bf5c
+set $green-color         #35bf5c
 set $black               #000000
+set $blue                #7AA6DA
 set $bg-color	         #1D1D1D
 set $inactive-bg-color   #101010
 set $text-color          #f3f4f5
@@ -14,7 +15,7 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $manjaro-color      $bg-color          $text-color          #00ff00
+client.focused          $green-color        $bg-color          $text-color          #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
@@ -44,7 +45,7 @@ bindsym $mod+Shift+q kill
 # start rofi
 bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
 
-# start dmenu_recency
+# start dmenu_run
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
 # toggle showing shortcuts/keybindings in conky
@@ -105,7 +106,7 @@ exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 
 # Clipbord manager
 exec --no-startup-id clipit
@@ -130,10 +131,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock.sh
 ###################
 ## sound-section ##
 ###################
-
-# exec --no-startup-id volumeicon
-# exec --no-startup-id pulseaudio
-# exec --no-startup-id pa-applet
 
 # Use pactl to adjust volume in PulseAudio.
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
@@ -161,8 +158,6 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness dow
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Media player controls
-bindsym XF86AudioPlayPause exec playerctl play-pause && sleep 0.2 && \
-        dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
 bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && \
 	dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
 bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && \
@@ -319,23 +314,24 @@ bindsym $mod+b bar mode toggle
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-# float windows
+# float certain windows
 for_window [class="Calender_Conky" instance="Calender_Conky"] floating enable
 for_window [title="ImageMagick: "] floating enable move position center
 for_window [title=" - mpv"] floating enable move position center
+for_window [title="feh "] floating enable move position center
 
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
 	i3bar_command i3bar -t
-        status_command i3blocks
-        position bottom
+    status_command i3blocks
+    position bottom
 	separator_symbol "|"
 	binding_mode_indicator yes
 	colors {
 		background #22222299
 		separator #757575
 		#                  border             background         text
-		focused_workspace  $bg-color          $manjaro-color     $black
+		focused_workspace  $blue              $green-color       $black
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
