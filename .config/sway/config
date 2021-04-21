@@ -3,8 +3,9 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-set $manjaro-color	 #35bf5c
-set $black		 #000000
+set $green-color	     #35bf5c
+set $black		         #000000
+set $blue                #7AA6DA
 set $bg-color	         #1D1D1D
 set $inactive-bg-color   #101010
 set $text-color          #f3f4f5
@@ -13,7 +14,7 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $manjaro-color      $bg-color          $text-color          #00ff00
+client.focused          $green-color        $bg-color          $text-color          #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
@@ -55,11 +56,8 @@ bindsym $mod+Shift+q kill
 # start rofi
 bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
 
-# start dmenu_recency
-bindsym $mod+Shift+d exec --no-startup-id dmenu_recency
-
-# start bmenu
-bindsym $mod+Shift+b exec --no-startup-id alacritty -e bmenu
+# start dmenu_run
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
 # toggle showing shortcuts/keybindings in conky
 bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.sh
@@ -68,10 +66,20 @@ bindsym $mod+c exec --no-startup-id $HOME/.config/conky/toggle_conky_shortcuts.s
 bindsym $mod+Ctrl+f exec firefox
 
 # start ranger
-bindsym $mod+Ctrl+r exec alacritty -e ranger
+bindsym $mod+Ctrl+r exec --no-startup-id alacritty -e ranger
 
 # start pcmanfm
 bindsym $mod+Ctrl+p exec pcmanfm
+
+# start newsboat
+bindsym $mod+Ctrl+n exec --no-startup-id alacritty -e newsboat
+
+# start cmus
+bindsym $mod+Ctrl+c exec --no-startup-id alacritty -e cmus
+
+# start alsamixer (ALSA) / pavucontrol (pulseaudio)
+bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec pavucontrol
 
 ########################
 
@@ -94,9 +102,8 @@ bindsym $mod+Ctrl+p exec pcmanfm
 # Clipbord manager
 #exec --no-startup-id clipit
 
-# exec --no-startup-id blueman-applet
-
-# exec_always --no-startup-id sbxkb
+# Dunst
+exec --no-startup-id dunst
 
 exec --no-startup-id xautolock -time 10 -locker blurlock
 
@@ -113,8 +120,6 @@ exec_always --no-startup-id fix_xcursor
 ###################
 ## sound-section ##
 ###################
-
-bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
 
 # Use pactl to adjust volume in PulseAudio.
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
@@ -138,8 +143,10 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness dow
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
-bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a sway -t 2000
+bindsym XF86AudioPlay exec playerctl play && sleep 0.2 && \
+	dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
+bindsym XF86AudioPause exec playerctl pause && sleep 0.2 && \
+	dunstify -h string:x-dunst-stack-tag:media "$(playerctl status --format "{{ emoji(status) }} {{ uc(status) }}")" -a i3 -t 2000
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
@@ -234,29 +241,28 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload & dunstify 'RELOADING sway configs' -a i3 -t 1000
 
 # restart sway inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart & dunstify 'RESTARTING sway' -a i3 -t 1000
 
 # exit sway
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+Shift+z mode "(L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown"
-mode "(L)ock, (E)xit, switch_(U)ser, sus(P)end, (H)ibernate, (R)eboot, (S)hutdown" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym p exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown" {
+    bindsym l exec --no-startup-id swaylock, mode "default"
+    bindsym u exec --no-startup-id systemctl suspend, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $mod+Shift+z mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown"
 
 # Lock screen
 bindsym $mod+Shift+x exec alacritty -t matrixlock -d 1366 768 -e cmatrix -Ls -u 5 & sleep 2 & swaymsg '[title = 'matrixlock']' fullscreen & swaylock -n -c 00000000 & swaymsg '[title = 'matrixlock']' kill
@@ -289,6 +295,12 @@ bindsym $mod+r mode "resize"
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+# float certain windows
+for_window [class="Calender_Conky" instance="Calender_Conky"] floating enable
+for_window [title="ImageMagick: "] floating enable move position center
+for_window [title=" - mpv"] floating enable move position center
+for_window [title="feh "] floating enable move position center
+
 # hide/unhide swaybar
 bindsym $mod+b bar mode toggle
 
@@ -301,7 +313,7 @@ bar {
 		background #22222299
 		separator #757575
 		#                  border             background         text
-		focused_workspace  $bg-color          $manjaro-color     $black
+		focused_workspace  $blue              $green-color       $black
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
