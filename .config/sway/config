@@ -241,10 +241,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload & dunstify 'RELOADING sway configs' -a i3 -t 1000
-
-# restart sway inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart & dunstify 'RESTARTING sway' -a i3 -t 1000
+bindsym $mod+Shift+r reload; dunstify 'RELOADING sway configs' -a sway -t 1000
 
 # exit sway
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
@@ -265,7 +262,7 @@ mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown" {
 bindsym $mod+Shift+z mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown"
 
 # Lock screen
-bindsym $mod+Shift+x exec alacritty -t matrixlock -d 1366 768 -e cmatrix -Ls -u 5 & sleep 2 & swaymsg '[title = 'matrixlock']' fullscreen & swaylock -n -c 00000000 & swaymsg '[title = 'matrixlock']' kill
+bindsym $mod+Shift+x exec alacritty -e $HOME/.config/sway/swaymatrixlock.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -297,9 +294,9 @@ for_window [urgent=latest] focus
 
 # float certain windows
 for_window [class="Calender_Conky" instance="Calender_Conky"] floating enable
-for_window [title="ImageMagick: "] floating enable move position center
-for_window [title=" - mpv"] floating enable move position center
-for_window [title="feh "] floating enable move position center
+for_window [title="ImageMagick: *"] floating enable
+for_window [title="- mpv"] floating enable
+for_window [title="feh*"] floating enable
 
 # hide/unhide swaybar
 bindsym $mod+b bar mode toggle
