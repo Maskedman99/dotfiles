@@ -14,7 +14,7 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $green-color        $bg-color          $text-color          #00ff00
+client.focused          $blue               $green-color       $black               #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
@@ -200,8 +200,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+# focus the child container / defocus the parent container
+bindsym $mod+Shift+a focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -297,6 +297,7 @@ for_window [class="Calender_Conky" instance="Calender_Conky"] floating enable
 for_window [title="ImageMagick: *"] floating enable
 for_window [title="- mpv"] floating enable
 for_window [title="feh*"] floating enable
+for_window [app_id=Alacritty] border pixel 1
 
 # hide/unhide swaybar
 bindsym $mod+b bar mode toggle
