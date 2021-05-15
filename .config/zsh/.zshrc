@@ -1,7 +1,7 @@
 # Enable Colors
 autoload -U colors && colors
 # Prompt
-PS1="%B%{$fg[blue]%}[%{$fg[green]%}%n%{$fg[magenta]%}@%{$fg[blue]%}%M %{$fg[red]%}%c%{$fg[blue]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[green]%}%c %{$fg[blue]%}$%{$reset_color%}%b "
 
 # Interactive 
 setopt interactive_comments
