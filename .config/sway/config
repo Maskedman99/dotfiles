@@ -124,13 +124,13 @@ exec_always --no-startup-id fix_xcursor
 ## sound-section ##
 ###################
 
-# Use pactl to adjust volume in PulseAudio.
+# PulseAudio
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+10 i3blocks
 
-# Use mixer for alsa to adjust volume
+# ALSA
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -RTMIN+10 i3blocks
@@ -138,9 +138,14 @@ bindsym XF86AudioMute exec --no-startup-id amixer set 'Master' toggle && pkill -
 
 ####################
 
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; dunstify 'brightness up' -a Sway"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; dunstify 'brightness down' -a Sway"
+########################
+# brightness controls ##
+########################
+
+bindsym XF86MonBrightnessUp exec "brightnessctl set +10%; dunstify 'brightness up' -a Sway"
+bindsym XF86MonBrightnessDown exec "brightnessctl set 10%-; dunstify 'brightness down' -a Sway"
+
+########################
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
