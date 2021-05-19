@@ -252,13 +252,21 @@ bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 # Set shut down, restart and locking features
 mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown" {
     bindsym l exec --no-startup-id $HOME/.config/sway/swaymatrixlock.sh, mode "default"
-    bindsym u exec --no-startup-id systemctl suspend, mode "default"
     bindsym e exec --no-startup-id swaymsg exit, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+  
+    # Runit
+    bindsym s exec --no-startup-id loginctl poweroff, mode "default"
+    bindsym r exec --no-startup-id loginctl reboot, mode "default"
+    bindsym h exec --no-startup-id loginctl hibernate, mode "default"
+    bindsym u exec --no-startup-id loginctl suspend, mode "default"
 
-    # exit system mode: "Enter" or "Escape"
+    # Systemd
+    #bindsym u exec --no-startup-id systemctl suspend, mode "default"
+    #bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    #bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    #bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+
+    # exit the mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
