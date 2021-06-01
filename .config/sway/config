@@ -54,7 +54,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
+#bindsym $mod+d exec --no-startup-id "rofi -sidebar-mode -modi combi,run,file-browser,drun,window -combi-modi window,drun -show combi -drun-match-fields name,generic,exec,categories -drun-display-format {name} -window-match-fields title,class,name,desktop -matching normal"
+bindsym $mod+d exec --no-startup-id bemenu-run
 
 # start dmenu_run
 bindsym $mod+Shift+d exec --no-startup-id $HOME/.config/scripts/fzfmenu.sh
@@ -159,7 +160,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Wallpaper
-output * bg $HOME/Pictures/Wallpapers/leaves_1.jpg fill
+output * bg $HOME/Pictures/Wallpapers/art_01.jpg fill
 
 # change focus
 bindsym $mod+j focus left
@@ -256,7 +257,7 @@ bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 
 # Set shut down, restart and locking features
 mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown" {
-    bindsym l exec --no-startup-id $HOME/.config/sway/swaymatrixlock.sh, mode "default"
+    bindsym l exec --no-startup-id $HOME/.config/scripts/swaymatrixlock.sh, mode "default"
     bindsym e exec --no-startup-id swaymsg exit, mode "default"
   
     # Runit
@@ -278,7 +279,7 @@ mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown" {
 bindsym $mod+Shift+z mode "(L)ock, (E)xit, s(U)spend, (H)ibernate, (R)eboot, (S)hutdown"
 
 # Lock screen
-bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/sway/swaymatrixlock.sh
+bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/scripts/swaymatrixlock.sh
 
 # resize window (you can also use the mouse for that)
 mode "Resize" {
@@ -313,6 +314,7 @@ for_window [class="Calender_Conky" instance="Calender_Conky"] floating enable
 for_window [title="ImageMagick: *"] floating enable
 for_window [title="- mpv"] floating enable
 for_window [title="feh*"] floating enable
+for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] floating enable, sticky enable, move position 650 0
 for_window [app_id=Alacritty] border pixel 1
 for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 50 ppt 60 ppt, border pixel 1
 
@@ -320,16 +322,19 @@ for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 50 p
 bindsym $mod+b bar mode toggle
 
 # swaybar
-bar {
-        status_command i3blocks
-        position bottom
-	separator_symbol "|"
+bar { 
+    position bottom
+    status_command ~/.config/scripts/statusbar.sh;
+
+	#separator_symbol "|"
 	colors {
-		background #22222299
+		background #222222ee
+        statusline #ffffff
 		separator #757575
 		#                  border             background         text
 		focused_workspace  $blue              $green-color       $black
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+	    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
+    font pango:Font Awesome 5 Free 10
 }
