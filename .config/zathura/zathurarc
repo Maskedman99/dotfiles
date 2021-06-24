@@ -1,0 +1,60 @@
+set window-title-basename       true
+set statusbar-home-tilde        true
+set font                        "fira code 10"
+set incremental-search          true
+#set selection-clipboard "clipboard"
+set adjust-open                 width
+set recolor                     true
+
+###############
+# GUI Options #
+###############
+# Shows or hides GUI elements.
+# 'c' -> command line, 's'-> statusbar, 'h' -> horizontal scrollbar, 'v' -> vertical scrollbar
+set guioptions                  "sv"
+
+#########
+# Theme #
+#########
+set notification-error-bg       "#ff5555" # Red
+set notification-error-fg       "#f8f8f2" # Foreground
+set notification-warning-bg     "#ff9f00" # Orange
+set notification-warning-fg     "#000000" # Black
+set notification-bg             rgba(29,31,33,0.5)  # Background
+set notification-fg             "#f8f8f2" # Foreground
+# Completion
+set completion-bg               rgba(29,31,33,0.5) # Background
+set completion-fg               "#35bf5c" # Green
+set completion-group-bg         rgba(29,31,33,0.5)  # Background
+set completion-group-fg         "#ff69b4" # Pink
+set completion-highlight-bg     "#7aa6da" # Blue
+set completion-highlight-fg     "#000000" # Black
+# Index
+set index-bg                    "#1d1f21" # Background
+set index-fg                    "#f8f8f2" # Foreground
+set index-active-bg             "#44475a" # Current Line
+set index-active-fg             "#f8f8f2" # Foreground
+# Inputbar
+set inputbar-bg                 rgba(29,31,33,0.5)  # Background
+set inputbar-fg                 "#f8f8f2" # Foreground
+# Statusbar
+set statusbar-bg                rgba(29,31,33,0.5)  # Background
+set statusbar-fg                "#ff69b4" # Pink
+set statusbar-v-padding         0
+# Highlight
+set highlight-color             "#ff9f00" # Orange
+set highlight-active-color      "#35bf5c" # Green
+set highlight-transparency      0.6
+# Deafault
+set default-bg                  rgba(29,31,33,0.9) # Background
+set default-fg                  "#f8f8f2" # Foreground
+# Render Loading
+set render-loading              true
+set render-loading-fg           rgba(29,31,33,0.9) # Background
+set render-loading-bg           "#f8f8f2" # Foreground
+
+#########################
+# Recolor mode settings #
+#########################
+set recolor-lightcolor          "#1d1f21" # Background
+set recolor-darkcolor           "#f8f8f2" # Foreground
